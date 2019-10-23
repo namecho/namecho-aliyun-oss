@@ -12,6 +12,12 @@ class AliyunOSS
     private $bucket;
     private $ossClient;
 
+    /**
+     * @param string $accessKeyId 阿里云主账号AccessKeyId
+     * @param string $accessKeySecret 阿里云主账号AccessKeySecret
+     * @param string $endpoint 按空间情况填写
+     * @param string $bucket 存储空间名称
+     */
     public function __construct($accessKeyId, $accessKeySecret, $endpoint, $bucket)
     {
         $this->accessKeyId = $accessKeyId;
@@ -32,6 +38,8 @@ class AliyunOSS
 
     /**
      * 字符串上传
+     * @param string $object 上传文件名
+     * @param string $content 上传内容
      */
     public function putContent($object, $content)
     {
@@ -47,6 +55,8 @@ class AliyunOSS
 
     /**
      * 文件上传
+     * @param string $object 上传文件名
+     * @param string $filePath 上传文件路径
      */
     public function uploadFile($object, $filePath)
     {
@@ -60,6 +70,8 @@ class AliyunOSS
 
     /**
      * 文件下载到本地文件
+     * @param string $object 要下载的文件
+     * @param string $localfile 下载到的目录
      */
     public function downloadFile($object, $localfile)
     {
@@ -77,6 +89,7 @@ class AliyunOSS
 
     /**
      * 文件下载到本地内存
+     * @param string $object 要下载的文件
      */
     public function getContent($object)
     {
@@ -90,6 +103,7 @@ class AliyunOSS
 
     /**
      * 删除
+     * @param mixed $objects 要删除的文件
      */
     public function deleteFile($objects)
     {
@@ -102,7 +116,8 @@ class AliyunOSS
     }
 
     /**
-     * 文件列表
+     * 获取文件列表
+     * @param string $prefix 要获取的文件夹
      */
     public function getFileList($prefix)
     {
